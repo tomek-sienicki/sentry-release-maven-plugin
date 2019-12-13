@@ -61,7 +61,7 @@ public class DeployMojo extends AbstractMojo {
 
     /**
      * Environment on which the deploy is created
-     * @parameter property="environment"
+     * @parameter property="sentry.environment"
      * @required
      */
     private String environment;

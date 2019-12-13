@@ -18,6 +18,12 @@ public class SentryReleaseRequestDTO {
     private List<String> projects;
     @JsonProperty("url")
     private String url;
+    @JsonProperty("commits")
+    private List<SentryCommit> commits;
+
+    public void setCommits(List<SentryCommit> commits) {
+        this.commits = commits;
+    }
 
     public String getVersion() {
         return version;
