@@ -1,10 +1,12 @@
 # Sentry Release Maven Plugin
 
+In the Sentry releases documentation, version are set using the commit hash, which could be disturbing for a
+monitoring team. This plugin use the Maven pom.xml version set in the project instead. A release is always created on
+Sentry, without the 'SNAPSHOT' suffix. 
+
 Sentry Release Maven Plugin allow to create and deploy a release into [Sentry](https://sentry.io/welcome/) monitoring tool.
 The aim of this plugin is to create and deploy release following the Maven conventions, while providing Git commits
-via the Sentry API. This plugin does not work with other SCM.
-
-A release is always created on Sentry, without the 'SNAPSHOT' suffix. 
+via the Sentry API. This plugin does not work with other SCM. 
 
 This plugin has been developed for Sentry 9.9.3.
 
@@ -18,7 +20,7 @@ Add into your Maven project, into the `<build>` section, a plugin
 <plugin>
     <groupId>com.jlefebure</groupId>
     <artifactId>sentry-release-maven-plugin</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>9.9.3.1</version>
     
     <configuration>
         <sentryUrl>https://yoursentryinstance.com/api/0</sentryUrl> <!-- NO TRAILING SLASH -->
