@@ -10,7 +10,7 @@
     <packaging>maven-plugin</packaging>
 
     <name>sentry-release-maven-plugin</name>
-
+    <description>Create and deploy release on Sentry from Maven</description>
     <url>https://www.jlefebure.com</url>
 
     <prerequisites>

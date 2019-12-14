@@ -20,7 +20,7 @@ Add into your Maven project, into the `<build>` section, a plugin
 <plugin>
     <groupId>com.jlefebure</groupId>
     <artifactId>sentry-release-maven-plugin</artifactId>
-    <version>9.9.3.1</version>
+    <version>9.9.3.2</version>
     
     <configuration>
         <sentryUrl>https://yoursentryinstance.com/api/0</sentryUrl> <!-- NO TRAILING SLASH -->
