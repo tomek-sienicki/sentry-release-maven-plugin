@@ -41,8 +41,9 @@ public class SentryHttpClient {
                 .build();
 
         logger.info("Send sentry release creation request on url " + request.urlString());
+        logger.info("Request : " + s);
         Response execute = httpClient.newCall(request).execute();
-        logger.info("Receive response " + execute.code());
+        logger.info("Response : " + execute.code());
         String body = execute.body().string();
         logger.info(body);
 
@@ -66,8 +67,9 @@ public class SentryHttpClient {
                 .build();
 
         logger.info("Send sentry release deploy creation request on url " + request.urlString());
+        logger.info("Request : " + s);
         Response execute = httpClient.newCall(request).execute();
-        logger.info("Receive response " + execute.code());
+        logger.info("Response : " + execute.code());
         String body = execute.body().string();
         logger.info(body);
 
@@ -87,8 +89,9 @@ public class SentryHttpClient {
                 .build();
 
         logger.info("Send sentry update release request on url " + request.urlString());
+        logger.info("Request : " + s);
         Response execute = httpClient.newCall(request).execute();
-        logger.info("Receive response " + execute.code());
+        logger.info("Response : " + execute.code());
         String body = execute.body().string();
         logger.info(body);
 
@@ -113,7 +116,7 @@ public class SentryHttpClient {
 
         logger.info("Send get release  request on url " + request.urlString());
         Response execute = httpClient.newCall(request).execute();
-        logger.info("Receive response " + execute.code());
+        logger.info("Response : " + execute.code());
         String body = execute.body().string();
         logger.info(body);
 

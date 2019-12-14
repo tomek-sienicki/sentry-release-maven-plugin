@@ -20,7 +20,7 @@ Add into your Maven project, into the `<build>` section, a plugin
 <plugin>
     <groupId>com.jlefebure</groupId>
     <artifactId>sentry-release-maven-plugin</artifactId>
-    <version>9.9.3.2</version>
+    <version>9.9.3.3</version>
     
     <configuration>
         <sentryUrl>https://yoursentryinstance.com/api/0</sentryUrl> <!-- NO TRAILING SLASH -->
@@ -144,7 +144,7 @@ You can bind Maven phases with this plugin, to be able to create and deploy a re
  <plugin>
      <groupId>com.jlefebure</groupId>
      <artifactId>sentry-release-maven-plugin</artifactId>
-     <version>1.0-SNAPSHOT</version>
+    <version>9.9.3.3</version>
      
      <configuration>
          <sentryUrl>https://yoursentryinstance.com/api/0</sentryUrl> <!-- NO TRAILING SLASH -->

@@ -13,10 +13,13 @@ import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
 import org.eclipse.jgit.errors.IncorrectObjectTypeException;
 import org.eclipse.jgit.errors.MissingObjectException;
+import org.eclipse.jgit.lib.Constants;
 import org.eclipse.jgit.lib.ObjectId;
 import org.eclipse.jgit.lib.Ref;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
+import org.eclipse.jgit.revwalk.RevSort;
+import org.eclipse.jgit.revwalk.RevWalk;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
 import java.io.File;
@@ -124,16 +127,33 @@ public class ReleaseMojo extends AbstractMojo {
                 .describe()
                 .call();
 
-            //Get last commit on last release (get last tag)
-            String lastTag = describe.split("-")[0];
-            this.getLog().info("Last tag was " + lastTag);
+            ObjectId lastCommitRelease;
 
-            ObjectId lastCommitRelease = git.getTags().get(lastTag).getObjectId();
+            this.getLog().info("Git describe give last tag : " + describe);
+            if (describe != null && !describe.isEmpty()) {
+                //Get last commit on last release (get last tag)
+                String lastTag = describe.split("-")[0];
+                lastCommitRelease = git.getTags().get(lastTag).getObjectId();
+                this.getLog().info("Last tag was " + lastTag);
+                this.getLog().info("Last release commit was " + lastCommitRelease.getName());
+            } else {
+                //First deploy, there is no last tag. Take the first commit
+                this.getLog().warn("No tag found. Assuming this is the first release deployed");
+                RevWalk rw = new RevWalk(git);
+                ObjectId headId = git.resolve(Constants.HEAD);
+                RevCommit root = rw.parseCommit(headId);
+                rw.sort(RevSort.REVERSE);
+                rw.markStart(root);
+                RevCommit next = rw.next();
 
-            this.getLog().info("Last release commit was " + lastCommitRelease.getName());
+                lastCommitRelease = next.getId();
+
+                this.getLog().info("First commit on this repo is " + lastCommitRelease.getName());
+            }
+
 
             //Get current commit
-            Ref currentCommit = git.getRefDatabase().findRef("HEAD");
+            Ref currentCommit = git.getRefDatabase().findRef(Constants.HEAD);
 
             this.getLog().info("Current commit is " + currentCommit.getObjectId().getName());
 
