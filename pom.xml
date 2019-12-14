@@ -6,7 +6,7 @@
 
     <groupId>com.jlefebure</groupId>
     <artifactId>sentry-release-maven-plugin</artifactId>
-    <version>9.9.3.1</version>
+    <version>9.9.3.2-SNAPSHOT</version>
     <packaging>maven-plugin</packaging>
 
     <name>sentry-release-maven-plugin</name>
@@ -60,7 +60,7 @@
         <url>https://github.com/jlefebure/sentry-release-maven-plugin.git</url>
         <connection>scm:git:https://github.com/jlefebure/sentry-release-maven-plugin.git</connection>
         <developerConnection>scm:git:https://github.com/jlefebure/sentry-release-maven-plugin.git</developerConnection>
-        <tag>9.9.3.1</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <properties>
